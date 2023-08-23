@@ -1,3 +1,11 @@
 .header {
     background-color: grey;
 }
+
+.book-card {
+    border-width: 2px 2px 2px 0;
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    width: 200px;
+}
