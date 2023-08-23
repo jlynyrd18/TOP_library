@@ -10,13 +10,19 @@ function Book() {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
 
-        const bookInfo = document.createElement("p");
-        bookInfo.textContent = `${book.title} by ${book.author}, ${book.pages} pages.`;
 
+        const bookInfo = document.createElement("p");
+        bookInfo.textContent = `${book.title} by ${book.author}`;
+
+        const pages = document.createElement("p");
+        pages.textContent = `${book.pages} pages.`
+
+        //instead of a p tag change to a checkbox that will be updated in the in the library window
         const readStatus = document.createElement("p");
         readStatus.textContent = book.read ? "Read" : "Not Read";
 
         bookCard.appendChild(bookInfo);
+        bookCard.appendChild(pages);
         bookCard.appendChild(readStatus);
         bookContainer.appendChild(bookCard);
     }   
@@ -35,4 +41,6 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 addBookToLibrary("Rich Dad Poor Dad", "Robert Kiyosaki", 300, true);
+addBookToLibrary("Harry Potter and the Sorcerer's stone", "J.K. Rowling", 400, true);
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 300, false);
 Book();
