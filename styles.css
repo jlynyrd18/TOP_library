@@ -1,11 +1,37 @@
 .header {
     background-color: grey;
+    text-align: center;
 }
 
+.login {
+    float: right;
+    margin-right: 25px;
+}
+
+.addBook {
+    text-align: center;
+    background-color: rgb(107, 107, 206);
+}
+
+#book-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+}
 .book-card {
-    border-width: 2px 2px 2px 0;
-    border-color: black;
-    border-style: solid;
+    border: 5px solid black;
+    border-left: none;
     border-radius: 10px;
     width: 200px;
+}
+
+.checkbox-input {
+    margin-left: 5px;
+}
+
+.read{
+    border-left: green solid 5px;
+}
+
+.not-read {
+    border-left: red solid 5px;
 }
