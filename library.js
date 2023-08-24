@@ -18,12 +18,31 @@ function Book() {
         pages.textContent = `${book.pages} pages.`
 
         //instead of a p tag change to a checkbox that will be updated in the in the library window
-        const readStatus = document.createElement("p");
-        readStatus.textContent = book.read ? "Read" : "Not Read";
+        const readStatus = document.createElement("input");
+        readStatus.type = "checkbox";
+        readStatus.checked = book.read;
+        readStatus.classList.add("checkbox-input");
+        readStatus.addEventListener("change", () => {
+            book.read = readStatus.checked;
+            if (readStatus.checked) {
+                bookCard.classList.remove("not-read");
+                bookCard.classList.add("read");
+            }
+            else {
+                bookCard.classList.remove("read");
+                bookCard.classList.add("not-read");
+            }
+            
+        })
+        const readStatusLabel = document.createElement("p");
+        readStatusLabel.textContent = "click to mark as read";
+        readStatusLabel.classList.add("read-label");
 
         bookCard.appendChild(bookInfo);
         bookCard.appendChild(pages);
         bookCard.appendChild(readStatus);
+        bookCard.appendChild(readStatusLabel);
+        
         bookContainer.appendChild(bookCard);
     }   
 }
