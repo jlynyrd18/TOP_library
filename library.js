@@ -42,7 +42,7 @@ function Book() {
         bookCard.appendChild(pages);
         bookCard.appendChild(readStatus);
         bookCard.appendChild(readStatusLabel);
-        
+
         bookContainer.appendChild(bookCard);
     }   
 }
@@ -58,6 +58,35 @@ function addBookToLibrary(title, author, pages, read) {
     
     myLibrary.push(book);
 }
+
+// Reference the button and form elements
+const newBookButton = document.getElementById("addBook");
+const newBookForm = document.getElementById("new-book-form");
+
+// Show the form when the button is clicked
+newBookButton.addEventListener("click", () => {
+    newBookForm.style.display = "block";
+});
+
+// Handle form submission
+newBookForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = parseInt(document.getElementById("pages").value);
+    const read = document.getElementById("read").checked;
+
+    addBookToLibrary(title, author, pages, read);
+    Book(); // Refresh the book display
+
+    // Reset form fields and hide the form
+    newBookForm.reset();
+    newBookForm.style.display = "none";
+});
+
+// ... (other parts of your code)
+
 
 addBookToLibrary("Rich Dad Poor Dad", "Robert Kiyosaki", 300, true);
 addBookToLibrary("Harry Potter and the Sorcerer's stone", "J.K. Rowling", 400, true);
