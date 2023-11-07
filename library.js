@@ -17,7 +17,6 @@ function Book() {
         const pages = document.createElement("p");
         pages.textContent = `${book.pages} pages.`
 
-        //instead of a p tag change to a checkbox that will be updated in the in the library window
         const readStatus = document.createElement("input");
         readStatus.type = "checkbox";
         readStatus.checked = book.read;
@@ -37,11 +36,19 @@ function Book() {
         const readStatusLabel = document.createElement("p");
         readStatusLabel.textContent = "click to mark as read";
         readStatusLabel.classList.add("read-label");
+        
+        const deleteBook = document.createElement("button");
+        deleteBook.textContent = "Delete";
+        deleteBook.addEventListener("click", () => {
+            removeBook(i);
+        });
+
 
         bookCard.appendChild(bookInfo);
         bookCard.appendChild(pages);
         bookCard.appendChild(readStatus);
         bookCard.appendChild(readStatusLabel);
+        bookCard.appendChild(deleteBook);
 
         bookContainer.appendChild(bookCard);
     }   
@@ -83,6 +90,13 @@ newBookForm.addEventListener("submit", (e) => {
     // Reset form fields and hide the form
     newBookForm.reset();
     newBookForm.style.display = "none";
+
+    const lastBookCard = document.querySelector(".book-card:last-child");
+    if(read) {
+        lastBookCard.classList.add("read");
+    }else{
+        lastBookCard.classList.add("not-read");
+    }
 });
 
 // ... (other parts of your code)
@@ -92,3 +106,8 @@ addBookToLibrary("Rich Dad Poor Dad", "Robert Kiyosaki", 300, true);
 addBookToLibrary("Harry Potter and the Sorcerer's stone", "J.K. Rowling", 400, true);
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 300, false);
 Book();
+
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    Book(); //Refresh the book display
+}
